@@ -1,0 +1,246 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+  
+  .glass {
+    @apply bg-white/30 backdrop-blur-lg border border-white/20 shadow-lg;
+  }
+  
+  .transition-standard {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary/10 to-primary/5;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/70 inline-block text-transparent bg-clip-text;
+  }
+}
+
+/* Fade in animation for sections */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated skill bars */
+.skill-bar {
+  position: relative;
+  height: 6px;
+  @apply bg-secondary rounded-full overflow-hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  @apply bg-gradient-to-r from-primary/80 to-primary rounded-full;
+  width: 0;
+  transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/40;
+}
+
+/* Progress bar styles */
+.progress-bar {
+  height: 6px;
+  @apply bg-secondary rounded-full overflow-hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  @apply bg-gradient-to-r from-primary/80 to-primary rounded-full;
+  transition: width 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Card styles */
+.experience-card {
+  @apply bg-card rounded-xl border border-border p-6 shadow-sm transition-all duration-300;
+}
+
+.experience-card:hover {
+  @apply shadow-md border-primary/20;
+  transform: translateY(-5px);
+}
+
+/* Tag/pill styles */
+.skill-tag {
+  @apply px-3 py-1.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium transition-colors;
+}
+
+.skill-tag:hover {
+  @apply bg-primary/10 text-primary;
+}
+
+/* Section title styling */
+.section-title {
+  @apply text-3xl md:text-4xl font-bold tracking-tight mb-12 text-center;
+  position: relative;
+}
+
+.section-title:after {
+  content: '';
+  @apply bg-primary/30 h-1 w-24 rounded-full block mx-auto mt-4;
+}
+
+/* Hero section gradient background */
+.hero-gradient {
+  background: radial-gradient(
+    circle at 50% 50%,
+    hsl(var(--primary) / 0.05) 0%,
+    hsl(var(--background)) 70%
+  );
+}
+
+/* Waves divider */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 94px;
+  transform: rotateY(180deg);
+}
+
+.wave-divider .shape-fill {
+  @apply fill-secondary/50;
+}
